@@ -108,7 +108,7 @@ class Summarizer:
             str: The response content from the ChatGPT engine.
         """
         response = openai.ChatCompletion.create(
-            engine=gpt_model,
+            modal=gpt_model,
             messages=[
                 {"role": "system", "content": llm_system_role},
                 {"role": "user", "content": prompt}

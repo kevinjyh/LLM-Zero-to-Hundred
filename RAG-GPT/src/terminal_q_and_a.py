@@ -39,7 +39,7 @@ while True:
     retrived_docs_str = "# Retrieved content:\n\n" + str(retrieved_docs_page_content)
     prompt = retrived_docs_str + "\n\n" + question
     response = openai.ChatCompletion.create(
-        engine=APPCFG.llm_engine,
+        modal=APPCFG.llm_engine,
         messages=[
             {"role": "system", "content": APPCFG.llm_system_role},
             {"role": "user", "content": prompt}

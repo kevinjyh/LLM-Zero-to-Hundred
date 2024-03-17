@@ -63,6 +63,7 @@ class ChatBot:
         prompt = f"{chat_history}{retrieved_content}{question}"
         print("========================")
         print(prompt)
+        print(f"\n\n這邊會顯示到底有無engine：{APPCFG.llm_engine}\n\n")
         response = openai.ChatCompletion.create(
             engine=APPCFG.llm_engine,
             messages=[
