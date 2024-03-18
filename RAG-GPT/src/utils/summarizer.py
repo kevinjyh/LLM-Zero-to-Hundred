@@ -107,12 +107,10 @@ class Summarizer:
         Returns:
             str: The response content from the ChatGPT engine.
         """
-        response = openai.ChatCompletion.create(
-            modal=gpt_model,
-            messages=[
-                {"role": "system", "content": llm_system_role},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=temperature,
-        )
+        response = openai.chat.completions.create(engine=gpt_model,
+        messages=[
+            {"role": "system", "content": llm_system_role},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=temperature)
         return response.choices[0].message.content

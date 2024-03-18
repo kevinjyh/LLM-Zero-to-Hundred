@@ -7,18 +7,14 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-gradio = "4.13.0"
+gradio = "*"
 langchain = "*"
-openai = "0.28.0"
-chromadb = "0.4.22"
-pypdf = "3.17.4"
-pandas = "2.1.4"
-pyprojroot = "^0.3.0"
-tiktoken = "^0.6.0"
+openai = "*"
+chromadb = "*"
+pypdf = "*"
+pandas = "*"
+pyprojroot = "*"
+tiktoken = "*"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.3"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"

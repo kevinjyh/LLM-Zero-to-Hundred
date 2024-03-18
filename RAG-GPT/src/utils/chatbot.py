@@ -63,18 +63,14 @@ class ChatBot:
         prompt = f"{chat_history}{retrieved_content}{question}"
         print("========================")
         print(prompt)
-        print(f"\n\n這邊會顯示到底有無engine：{APPCFG.llm_engine}\n\n")
-        response = openai.ChatCompletion.create(
-            engine=APPCFG.llm_engine,
-            messages=[
-                {"role": "system", "content": APPCFG.llm_system_role},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=temperature,
-            # stream=False
-        )
+        response = openai.chat.completions.create(model=APPCFG.llm_engine,
+        messages=[
+            {"role": "system", "content": APPCFG.llm_system_role},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=temperature)
         chatbot.append(
-            (message, response["choices"][0]["message"]["content"]))
+            (message, response.choices[0].message.content))
         time.sleep(2)
 
         return "", chatbot, retrieved_content

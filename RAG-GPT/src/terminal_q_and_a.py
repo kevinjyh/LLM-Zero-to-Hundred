@@ -38,11 +38,9 @@ while True:
         str(x.page_content)+"\n\n" for x in docs]
     retrived_docs_str = "# Retrieved content:\n\n" + str(retrieved_docs_page_content)
     prompt = retrived_docs_str + "\n\n" + question
-    response = openai.ChatCompletion.create(
-        modal=APPCFG.llm_engine,
-        messages=[
-            {"role": "system", "content": APPCFG.llm_system_role},
-            {"role": "user", "content": prompt}
-        ]
-    )
-    print(response['choices'][0]['message']['content'])
+    response = openai.chat.completions.create(engine=APPCFG.llm_engine,
+    messages=[
+        {"role": "system", "content": APPCFG.llm_system_role},
+        {"role": "user", "content": prompt}
+    ])
+    print(response.choices[0].message.content)
